@@ -1,0 +1,7 @@
+<h1>{{ accion }} Cita</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{{ accion }}</button>
+</form>
+<a href="{% url 'citas:listado_citas' %}">← Volver</a>

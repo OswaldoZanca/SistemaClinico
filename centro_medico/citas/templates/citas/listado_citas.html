@@ -1,0 +1,29 @@
+<h1>Listado de Citas</h1>
+<a href="{% url 'citas:crear_cita' %}">Registrar nueva cita</a>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cita in citas %}
+        <tr>
+            <td>{{ cita.paciente.nombre_completo }}</td>
+            <td>{{ cita.medico.nombre_completo }}</td>
+            <td>{{ cita.fecha_cita }}</td>
+            <td>{{ cita.hora_cita }}</td>
+            <td>{{ cita.estado }}</td>
+            <td>
+                <a href="{% url 'citas:editar_cita' cita.id %}">Editar</a> |
+                <a href="{% url 'citas:eliminar_cita' cita.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
